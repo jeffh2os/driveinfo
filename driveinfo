@@ -3,8 +3,10 @@
 #Updated 2021/11/21
 #https://github.com/jeffh2os/
 
+#Get All SmartCTL Available Drives
 smartctl --scan-open |awk '{print $1,$2,$3}'|grep -v "#" |sed s'/sat+//g' > /tmp/drives
 
+#Create Script to grab and sort drive info and health
 IFS=$'\n'
 while read line;
     do
