@@ -1,0 +1,8 @@
+#!/bin/bash
+smartctl --scan-open |awk '{print $1,$2,$3}'|grep -v "#" |sed s'/sat+//g' > /tmp/drives
+
+IFS=$'\n'
+while read line;
+    do
+        echo "echo [##### Drive: "$line"]" && echo "smartctl -i -H "$line" && echo"; done < /tmp/drives > /tmp/smartcheck.sh && chmod +x /tmp/smartcheck.sh && /tmp/smartcheck.sh|grep -v "smartctl \|Copyright"
+
