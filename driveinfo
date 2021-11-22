@@ -1,4 +1,8 @@
 #!/bin/bash
+#Created 2021/11/21
+#Updated 2021/11/21
+#https://github.com/jeffh2os/
+
 smartctl --scan-open |awk '{print $1,$2,$3}'|grep -v "#" |sed s'/sat+//g' > /tmp/drives
 
 IFS=$'\n'
